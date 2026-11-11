@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>ModelNest – 3D Models for Your Ideas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#05050b;--s1:#0d0d18;--s2:#141425;--bd:#24243a;--ink:#f3f4fb;--mut:#9a9bb5;--b:#18a0fb;--g:linear-gradient(120deg,#18a0fb,#6d5cff 55%,#a855f7);color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;background-image:radial-gradient(60rem 30rem at 85% -5%,rgba(109,92,255,.18),transparent);background-repeat:no-repeat}
+h1,h2,h3{font-family:Sora,Inter,sans-serif;margin:0;line-height:1.15}
+.w{max-width:1120px;margin:auto;padding:0 18px}
+header{position:sticky;top:0;z-index:20;background:rgba(5,5,11,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--bd)}
+header .w{display:flex;align-items:center;justify-content:space-between;height:64px;gap:10px}
+.logo{font:800 1.4rem Sora;cursor:pointer;white-space:nowrap}
+.gt{background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav{display:flex;gap:4px;overflow-x:auto}nav button{background:none;border:0;color:var(--mut);font:500 .95rem Inter;padding:8px 14px;border-radius:99px;cursor:pointer;white-space:nowrap}
+nav button:hover{color:var(--ink)}nav button.on{color:#fff;background:var(--s2);box-shadow:inset 0 0 0 1px var(--bd)}
+.btn{background:var(--g);color:#fff;border:0;padding:12px 22px;border-radius:12px;cursor:pointer;font:600 .95rem Inter;box-shadow:0 8px 24px rgba(109,92,255,.35);transition:.2s}
+.btn:hover{transform:translateY(-2px)}.btn:disabled{opacity:.6}
+.btn.g{background:transparent;box-shadow:inset 0 0 0 1px var(--bd);color:var(--ink)}.btn.sm{padding:6px 12px;font-size:.82rem;border-radius:9px;box-shadow:inset 0 0 0 1px var(--bd);background:transparent}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:56px 0 30px}
+.pill{display:inline-block;border:1px solid var(--bd);background:var(--s1);color:var(--mut);padding:5px 14px;border-radius:99px;font-size:.82rem;margin-bottom:18px}
+.hero h1{font-size:clamp(2.2rem,5.5vw,3.8rem);font-weight:800;letter-spacing:-.02em}
+.hero p{color:var(--mut);font-size:1.1rem;max-width:34rem;margin:16px 0 26px}.cta{display:flex;gap:12px;flex-wrap:wrap}
+.art{aspect-ratio:1;max-width:380px;margin:auto;width:100%;border-radius:32px;background:linear-gradient(135deg,#10102a,#2a1a5e);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;font-size:8rem;box-shadow:0 0 60px rgba(109,92,255,.35)}
+.feat{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 56px}
+.feat div{background:var(--s1);border:1px solid var(--bd);border-radius:16px;padding:18px}.feat b{display:block;font-family:Sora;margin:6px 0 2px}.feat span{color:var(--mut);font-size:.88rem}.feat i{font-style:normal;font-size:1.5rem}
+.sec{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap;margin-bottom:20px}.sec h2{font-size:1.8rem}.sec p{color:var(--mut);margin:4px 0 0}
+.search{background:var(--s1);border:1px solid var(--bd);border-radius:12px;padding:10px 14px;color:var(--ink);font:inherit;width:260px;max-width:100%}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px;margin-bottom:60px}
+.card{background:var(--s1);border:1px solid var(--bd);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:.25s}
+.card:hover{transform:translateY(-6px);border-color:#4a4a8a}
+.img{aspect-ratio:1;background:linear-gradient(135deg,#10102a,#1b1340);display:flex;align-items:center;justify-content:center;font-size:3.5rem;overflow:hidden}.img img{width:100%;height:100%;object-fit:cover}
+.card .b{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}.card h3{font-size:1.05rem}.mut{color:var(--mut);font-size:.9rem}
+.price{font:800 1.3rem Sora;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{display:inline-block;background:var(--s2);border:1px solid var(--bd);border-radius:99px;padding:1px 10px;font-size:.78rem;color:var(--mut);align-self:flex-start}
+.add{border:2px dashed #3a3a6a;background:transparent;align-items:center;justify-content:center;min-height:300px;cursor:pointer;color:var(--mut);font:600 1rem Sora}.add b{font-size:3.5rem;font-weight:400;line-height:1}
+.fab{position:fixed;right:20px;bottom:20px;width:62px;height:62px;border-radius:50%;font-size:2.1rem;border:0;background:var(--g);color:#fff;cursor:pointer;z-index:15}
+.hide{display:none!important}
+.two{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;margin-bottom:60px;padding-top:36px}
+.steps{display:flex;flex-direction:column;gap:14px;margin-top:22px}.steps div{display:flex;gap:14px;background:var(--s1);border:1px solid var(--bd);border-radius:14px;padding:14px}.steps em{font:800 1.1rem Sora;font-style:normal;width:38px;height:38px;border-radius:50%;background:var(--g);display:flex;align-items:center;justify-content:center;flex:none}.steps span{color:var(--mut);font-size:.9rem;display:block}
+.box{background:var(--s1);border:1px solid var(--bd);border-radius:18px;padding:22px;margin-bottom:14px}
+label{display:block;font-size:.82rem;color:var(--mut);margin:12px 0 4px}
+input,textarea{width:100%;padding:11px 12px;border:1px solid var(--bd);border-radius:11px;background:var(--bg);color:var(--ink);font:inherit}input:focus,textarea:focus{outline:2px solid #6d5cff;border-color:transparent}
+.pay{display:flex;gap:8px}.pay label{flex:1;border:1px solid var(--bd);border-radius:11px;padding:11px;color:var(--ink);cursor:pointer;margin:0;display:flex;gap:7px;align-items:center;font-size:.9rem}.pay input{width:auto}
+dialog{border:1px solid var(--bd);border-radius:20px;background:var(--s1);color:var(--ink);width:min(480px,94vw);padding:24px;max-height:90vh}dialog::backdrop{background:rgba(0,0,0,.7)}
+.row{display:flex;gap:8px;margin-top:16px;justify-content:flex-end;flex-wrap:wrap}
+.note{border:1px dashed var(--bd);border-radius:16px;padding:30px;color:var(--mut);text-align:center;margin-bottom:60px}
+footer{border-top:1px solid var(--bd);padding:30px 0;color:var(--mut);font-size:.9rem;text-align:center}footer .logo{display:block;margin-bottom:8px;cursor:default}
+.lnk{background:none;border:0;color:var(--mut);cursor:pointer;text-decoration:underline;font:inherit;margin-top:8px}
+@media(max-width:800px){.hero,.two{grid-template-columns:1fr}.hero{padding-top:28px}.feat{grid-template-columns:1fr 1fr}.art{max-width:260px;font-size:5rem}}
+</style></head><body>
+<header><div class="w"><span class="logo" id="logo">Model<span class="gt">Nest</span></span><nav id="nav"></nav></div></header>
+<main id="main" class="w"></main>
+<footer><div class="w"><span class="logo">Model<span class="gt">Nest</span></span><div>3D Models for Your Ideas · Cash on Delivery &amp; Online Pay accepted</div><div style="margin-top:6px">© ModelNest</div><button class="lnk" id="ownerbtn">Owner login</button></div></footer>
+<button class="fab hide" id="fab" title="Add model">+</button>
+<dialog id="dlg"></dialog>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+<script>
+const sb=supabase.createClient('https://neuayksxeetipnmrmhtz.supabase.co','sb_publishable_L23wjJE_4FxblpZEdJHUpQ_y18JQMka');
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let isOwner=false,tab='shop',q='',products=[],orders=[],customs=[],settings={pay_phone:''};
+const toast=m=>alert(m);
+function dlg(h){const d=$('#dlg');d.innerHTML=h;d.showModal();return d}
+const closeD=()=>$('#dlg').close();
+$('#logo').onclick=()=>go('shop');
+function go(t){tab=t;render();scrollTo({top:0})}
+async function up(bucket,file){
+  const ext=(file.name.split('.').pop()||'bin').replace(/[^a-z0-9]/gi,'').slice(0,8);
+  const path=Date.now()+'-'+Math.random().toString(36).slice(2,8)+'.'+ext;
+  const{error}=await sb.storage.from(bucket).upload(path,file);if(error)throw error;return path}
+const pub=p=>sb.storage.from('product-media').getPublicUrl(p).data.publicUrl;
+async function loadProducts(){const{data,error}=await sb.from('products').select('*').order('created_at',{ascending:false});if(error)toast('Could not load models: '+error.message);else products=data}
+async function loadSettings(){const{data}=await sb.from('settings').select('pay_phone').eq('id','shop').maybeSingle();if(data)settings=data}
+async function loadOrders(){
+  const[a,b]=await Promise.all([sb.from('orders').select('*').order('created_at',{ascending:false}),sb.from('customs').select('*').order('created_at',{ascending:false})]);
+  orders=a.data||[];customs=b.data||[]}
+function renderNav(){
+  const t=[['shop','Shop'],['custom','Custom Print']];
+  if(isOwner)t.push(['orders','Orders ('+(orders.length+customs.length)+')'],['settings','Settings']);
+  $('#nav').innerHTML=t.map(([k,l])=>`<button class="${tab===k?'on':''}" data-t="${k}">${l}</button>`).join('');
+  $('#nav').querySelectorAll('button').forEach(b=>b.onclick=()=>go(b.dataset.t));
+  $('#ownerbtn').textContent=isOwner?'Log out':'Owner login'}
+function render(){
+  renderNav();$('#fab').classList.toggle('hide',!(isOwner&&tab==='shop'));
+  ({shop:shop,custom:custom,orders:ordersV,settings:settingsV}[tab])($('#main'))}
+function shop(m){
+  const list=products.filter(p=>((p.name||'')+' '+(p.description||'')+' '+(p.material||'')).toLowerCase().includes(q));
+  m.innerHTML=`<section class="hero"><div><span class="pill">✨ Premium 3D prints, made for makers</span><h1>3D models for <span class="gt">your ideas.</span></h1><p>Discover ready-made 3D printed models, or upload your own design and we’ll print and deliver it to your door.</p><div class="cta"><button class="btn" id="b1">Browse models</button><button class="btn g" id="b2">Print my own design</button></div></div><div class="art">🧊</div></section>
+  <section class="feat"><div><i>📦</i><b>STL &amp; OBJ ready</b><span>Works with any design file</span></div><div><i>💵</i><b>Cash on Delivery</b><span>Or pay online by phone</span></div><div><i>🛡️</i><b>Safe &amp; secure</b><span>Quality checked every print</span></div><div><i>🎨</i><b>Custom prints</b><span>Your idea, printed &amp; shipped</span></div></section>
+  <section id="shopsec"><div class="sec"><div><h2>Our <span class="gt">models</span></h2><p>${products.length} model${products.length==1?'':'s'} available</p></div><input class="search" id="sr" placeholder="🔍 Search models…" value="${esc(q)}"></div>
+  <div class="grid">${isOwner?'<div class="card add" id="addc"><b>+</b>Add new model</div>':''}${list.map(p=>`<div class="card"><div class="img">${p.image?`<img src="${esc(p.image)}" alt="">`:'🧊'}</div><div class="b"><h3>${esc(p.name)}</h3>${p.material?`<span class="tag">${esc(p.material)}</span>`:''}<span class="mut">${esc(p.description)}</span><div style="flex:1"></div><div class="price">₹${esc(p.price)}</div><div style="display:flex;gap:6px;margin-top:6px"><button class="btn" data-buy="${p.id}" style="flex:1">Buy now</button>${isOwner?`<button class="btn sm" data-del="${p.id}">🗑</button>`:''}</div></div></div>`).join('')}</div>
+  ${!list.length&&!isOwner?'<div class="note">'+(products.length?'No models match your search.':'New models are coming soon. Check back shortly!')+'</div>':''}</section>`;
+  $('#b1').onclick=()=>$('#shopsec').scrollIntoView();$('#b2').onclick=()=>go('custom');
+  const sr=$('#sr');sr.oninput=()=>{q=sr.value.toLowerCase();const pos=sr.selectionStart;shop(m);const n=$('#sr');n.focus();n.setSelectionRange(pos,pos)};
+  if($('#addc'))$('#addc').onclick=addProduct;
+  m.querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>checkout(products.find(p=>p.id===b.dataset.buy)));
+  m.querySelectorAll('[data-del]').forEach(b=>b.onclick=async()=>{if(!confirm('Delete this model?'))return;const{error}=await sb.from('products').delete().eq('id',b.dataset.del);if(error)return toast(error.message);await loadProducts();render()});
+}
+$('#fab').onclick=()=>addProduct();
+function addProduct(){
+  const d=dlg(`<h2 style="font-size:1.4rem">Add new <span class="gt">3D model</span></h2>
+  <label>Name</label><input id="n"><label>Price (₹)</label><input id="pr" type="number" min="0"><label>Description</label><textarea id="ds" rows="3"></textarea>
+  <label>Material / size (optional)</label><input id="mt" placeholder="PLA, 10 cm tall"><label>Photo</label><input id="im" type="file" accept="image/*"><label>3D model file (STL / OBJ / 3MF)</label><input id="fl" type="file">
+  <div id="msg" style="margin-top:12px;font-size:.9rem"></div>
+  <div class="row"><button class="btn g" id="x">Cancel</button><button class="btn" id="ok">Add model</button></div>`);
+  const msg=(t,bad)=>{const m=d.querySelector('#msg');m.textContent=t;m.style.color=bad?'#ff8a8a':'#9a9bb5'};
+  d.querySelector('#x').onclick=closeD;
+  d.querySelector('#ok').onclick=async e=>{
+    const btn=e.target,n=d.querySelector('#n').value.trim(),pr=d.querySelector('#pr').value;
+    if(!n||pr==='')return msg('Please enter name and price',1);
+    btn.disabled=true;
+    try{
+      msg('Checking login…');
+      const{data:{session}}=await sb.auth.getSession();
+      if(!session)throw new Error('You are logged out. Close this, click Owner login, and try again.');
+      const im=d.querySelector('#im').files[0],fl=d.querySelector('#fl').files[0];
+      if((im&&im.size>50e6)||(fl&&fl.size>50e6))throw new Error('A file is over 50 MB, which is the free plan limit.');
+      let i='',f='';
+      if(im){msg('Uploading photo…');i=pub(await up('product-media',im))}
+      if(fl){msg('Uploading 3D file…');f=pub(await up('product-media',fl))}
+      msg('Saving model…');
+      const{error}=await sb.from('products').insert({name:n,price:Number(pr),description:d.querySelector('#ds').value,material:d.querySelector('#mt').value,image:i,file:f});
+      if(error)throw error;
+      closeD();await loadProducts();render();
+    }catch(err){console.error(err);msg('Error: '+(err.message||JSON.stringify(err)),1);btn.disabled=false}
+  };
+}
+function payBlock(){return `<label>Payment method</label><div class="pay"><label><input type="radio" name="pm" value="COD" checked> 💵 Cash on Delivery</label><label><input type="radio" name="pm" value="Online"> 📱 Online (phone pay)</label></div><div id="pinfo" class="mut hide" style="margin-top:8px">Pay to phone number <b style="color:var(--ink)">${esc(settings.pay_phone||'(not set yet)')}</b> using any UPI app, then enter the transaction ID below.</div><div id="txw" class="hide"><label>Transaction ID</label><input id="tx"></div>`}
+function wirePay(d){d.querySelectorAll('[name=pm]').forEach(r=>r.onchange=()=>{const on=d.querySelector('[name=pm]:checked').value==='Online';d.querySelector('#pinfo').classList.toggle('hide',!on);d.querySelector('#txw').classList.toggle('hide',!on)})}
+function checkout(p){
+  const d=dlg(`<h2 style="font-size:1.3rem">${esc(p.name)} <span class="gt">· ₹${esc(p.price)}</span></h2>
+  <label>Your name</label><input id="n"><label>Phone number</label><input id="ph" type="tel"><label>Delivery address</label><textarea id="ad" rows="3"></textarea>${payBlock()}
+  <div class="row"><button class="btn g" id="x">Cancel</button><button class="btn" id="ok">Place order</button></div>`);wirePay(d);
+  d.querySelector('#x').onclick=closeD;
+  d.querySelector('#ok').onclick=async e=>{
+    const n=d.querySelector('#n').value.trim(),ph=d.querySelector('#ph').value.trim(),ad=d.querySelector('#ad').value.trim();
+    if(!n||!ph||!ad)return toast('Please fill name, phone and address');
+    e.target.disabled=true;
+    const{error}=await sb.from('orders').insert({product:p.name,price:p.price,name:n,phone:ph,address:ad,payment:d.querySelector('[name=pm]:checked').value,txn:d.querySelector('#tx').value});
+    if(error){toast('Could not place order: '+error.message);e.target.disabled=false;return}
+    closeD();const d2=dlg(`<h2 style="font-size:1.4rem">✅ Order placed!</h2><p class="mut">Thank you, ${esc(n)}. We’ll contact you on ${esc(ph)} to confirm your order.</p><div class="row"><button class="btn" id="dn">Done</button></div>`);d2.querySelector('#dn').onclick=closeD;
+  };
+}
+function custom(m){
+  m.innerHTML=`<div class="two"><div><span class="pill">🛠 Custom printing</span><h2 style="font-size:2.2rem">Print <span class="gt">your own</span> 3D model</h2><p class="mut">Have a design? Upload it with your details and we’ll print it and deliver it to you.</p>
+  <div class="steps"><div><em>1</em><p style="margin:0"><b>Upload your file</b><span>STL, OBJ or 3MF with size &amp; colour</span></p></div><div><em>2</em><p style="margin:0"><b>We review &amp; quote</b><span>We call you with price and delivery time</span></p></div><div><em>3</em><p style="margin:0"><b>We print &amp; ship</b><span>Pay by Cash on Delivery or online</span></p></div></div></div>
+  <div class="box" id="cf"><label style="margin-top:0">Your name</label><input id="n"><label>Phone number</label><input id="ph" type="tel"><label>Delivery address</label><textarea id="ad" rows="2"></textarea>
+  <label>Upload your file</label><input id="fl" type="file"><label>Details (size, colour, material, quantity…)</label><textarea id="dt" rows="3"></textarea>${payBlock()}
+  <div class="row"><button class="btn" id="ok" style="width:100%">Send request</button></div></div></div>`;
+  const f=$('#cf');wirePay(f);
+  $('#ok').onclick=async e=>{
+    const g=s=>f.querySelector(s).value.trim(),file=f.querySelector('#fl').files[0];
+    if(!g('#n')||!g('#ph')||!g('#ad')||!file)return toast('Please fill name, phone, address and choose a file');
+    e.target.disabled=true;e.target.textContent='Uploading…';
+    try{const path=await up('custom-files',file);
+      const{error}=await sb.from('customs').insert({name:g('#n'),phone:g('#ph'),address:g('#ad'),details:g('#dt'),file:path,file_name:file.name,payment:f.querySelector('[name=pm]:checked').value,txn:f.querySelector('#tx').value});
+      if(error)throw error;
+      f.innerHTML='<h2 style="font-size:1.4rem">✅ Request sent!</h2><p class="mut">We’ll review your file and contact you with the price and delivery time.</p>';
+    }catch(err){toast('Could not send: '+(err.message||err));e.target.disabled=false;e.target.textContent='Send request'}
+  };
+}
+function oc(o,col,c){return `<div class="box"><div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><b>${c?'🛠 Custom print':esc(o.product)+' — ₹'+esc(o.price)}</b><span class="tag">${esc(o.status)}</span></div>
+  <div class="mut">${esc(o.name)} · <a style="color:var(--b)" href="tel:${esc(o.phone)}">${esc(o.phone)}</a> · ${new Date(o.created_at).toLocaleString()}</div><div>${esc(o.address)}</div><div class="mut">Payment: ${esc(o.payment)}${o.txn?' · Txn '+esc(o.txn):''}</div>
+  ${c?`<p>${esc(o.details)}</p><button class="btn sm" data-f="${esc(o.file)}|${esc(o.file_name)}">⬇ Download ${esc(o.file_name)}</button>`:''}
+  <div class="row" style="justify-content:flex-start">${['New','Printing','Shipped','Done'].map(s=>`<button class="btn sm" data-s="${col}|${o.id}|${s}">${s}</button>`).join('')}<button class="btn sm" data-d="${col}|${o.id}">Delete</button></div></div>`}
+function ordersV(m){
+  const all=[...orders.map(o=>oc(o,'orders',0)),...customs.map(o=>oc(o,'customs',1))];
+  m.innerHTML=`<div class="sec" style="margin-top:36px"><h2>Your <span class="gt">orders</span></h2><button class="btn sm" id="rf">↻ Refresh</button></div>`+(all.length?all.join(''):'<div class="note">No orders yet.</div>');
+  $('#rf').onclick=async()=>{await loadOrders();render()};
+  m.querySelectorAll('[data-s]').forEach(b=>b.onclick=async()=>{const[t,id,s]=b.dataset.s.split('|');const{error}=await sb.from(t).update({status:s}).eq('id',id);if(error)return toast(error.message);await loadOrders();render()});
+  m.querySelectorAll('[data-d]').forEach(b=>b.onclick=async()=>{if(!confirm('Delete?'))return;const[t,id]=b.dataset.d.split('|');const{error}=await sb.from(t).delete().eq('id',id);if(error)return toast(error.message);await loadOrders();render()});
+  m.querySelectorAll('[data-f]').forEach(b=>b.onclick=async()=>{const[p,n]=b.dataset.f.split('|');const{data,error}=await sb.storage.from('custom-files').createSignedUrl(p,120,{download:n});if(error)return toast(error.message);location.href=data.signedUrl});
+}
+function settingsV(m){
+  m.innerHTML=`<div class="sec" style="margin-top:36px"><h2>Store <span class="gt">settings</span></h2></div><div class="box"><label style="margin-top:0">Phone number for online payment (UPI)</label><input id="sp" type="tel" value="${esc(settings.pay_phone)}"><div class="row"><button class="btn" id="sv">Save</button></div></div>`;
+  $('#sv').onclick=async()=>{const{error}=await sb.from('settings').update({pay_phone:$('#sp').value}).eq('id','shop');if(error)return toast(error.message);settings.pay_phone=$('#sp').value;toast('Saved')};
+}
+$('#ownerbtn').onclick=()=>{
+  if(isOwner)return sb.auth.signOut();
+  const d=dlg(`<h2 style="font-size:1.3rem">Owner <span class="gt">login</span></h2><label>Email</label><input id="em" type="email"><label>Password</label><input id="pw" type="password">
+  <div class="row"><button class="btn g" id="x">Cancel</button><button class="btn" id="ok">Log in</button></div>`);
+  d.querySelector('#x').onclick=closeD;
+  d.querySelector('#ok').onclick=async e=>{e.target.disabled=true;
+    const{error}=await sb.auth.signInWithPassword({email:d.querySelector('#em').value.trim(),password:d.querySelector('#pw').value});
+    if(error){toast('Login failed: '+error.message);e.target.disabled=false}else closeD()};
+};
+sb.auth.onAuthStateChange((_e,s)=>{setTimeout(async()=>{
+  isOwner=!!s;
+  if(isOwner)await loadOrders();else{orders=[];customs=[];if(tab==='orders'||tab==='settings')tab='shop'}
+  render()},0)});
+(async()=>{
+  $('#main').innerHTML='<div class="note" style="margin-top:40px">Loading the store…</div>';
+  await Promise.all([loadProducts(),loadSettings()]);render();
+})();
+</script></body></html>
